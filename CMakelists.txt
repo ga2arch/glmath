@@ -8,7 +8,9 @@ add_library(glmath INTERFACE)
 target_include_directories(glmath INTERFACE ${GLMATH_INCLUDE_DIR})
 
 set(glmath_headers
-    include/glmath.h
+    #include/glmath.h
+    include/vector.h
+    include/utils.h
 )
 
 add_custom_target(glmath_ide SOURCES ${glmath_headers})
@@ -21,7 +23,11 @@ macro(add_catch_test)
     foreach(arg ${ARGV})
 
         add_executable(${arg} tests/${arg}.cpp $<TARGET_OBJECTS:main_test>)
-        target_include_directories(${arg} PRIVATE ${CATCH_INCLUDE_DIR})
+        target_include_directories(${arg}
+            PRIVATE ${CATCH_INCLUDE_DIR}
+            PRIVATE ${GLMATH_INCLUDE_DIR}
+        )
+
         set_target_properties(${arg}
             PROPERTIES
             RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/tests/bin"
