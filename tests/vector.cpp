@@ -11,5 +11,6 @@ SCENARIO( "vectors manipulation", "[vector]" ) {
         
         REQUIRE( vec.data().size() == 4 );
         
+                
     }
 }
