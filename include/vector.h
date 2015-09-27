@@ -24,7 +24,7 @@ namespace glmath { namespace vector {
         Vector(E&&...e): _data({{ std::forward<E>(e)...}}) {
         }
         
-        std::array<float, N>& data() {
+        const std::array<float, N>& data() const {
             return _data;
         }
         
