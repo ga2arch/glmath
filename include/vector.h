@@ -32,8 +32,8 @@ namespace glmath { namespace vector {
             return _data[0];
         }
         
-        template <typename = float>
-        float y(typename std::enable_if<(N > 1)>::type* = 0) {
+        template <typename T = float>
+        float y(typename std::enable_if<(N > 1), T>::type* = 0) {
             return _data[1];
         }
         

@@ -12,9 +12,13 @@ SCENARIO( "vectors manipulation", "[vector]" ) {
         Vector<4> v1({3.0f,2.0f,1.1f,0.0f});
         
         Vector<2> vec2({0.0f, 1.1f});
-        Vector<2> vec3 = vec.xy();
+        Vector<2> vec3 = vec.xx();
         
         REQUIRE( vec.data().size() == 4 );
+        
+        auto temp = std::array<float, 2>({{0.0f, 0.0f}});
+        
+        REQUIRE( vec3.data() ==  temp );
         
     }
 }
