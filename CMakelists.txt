@@ -1,0 +1,34 @@
+cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
+project(glmath VERSION 0.1 LANGUAGES CXX)
+include(CTest)
+
+set(GLMATH_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/glmath/include)
+
+add_library(glmath INTERFACE)
+target_include_directories(glmath INTERFACE ${GLMATH_INCLUDE_DIR})
+
+set(glmath_headers
+    include/glmath.h
+)
+
+add_custom_target(glmath_ide SOURCES ${glmath_headers})
+
+# Tests
+add_library(main_test OBJECT tests/main.cpp)
+target_include_directories(main_test PRIVATE ${CATCH_INCLUDE_DIR})
+
+macro(add_catch_test)
+    foreach(arg ${ARGV})
+
+        add_executable(${arg} tests/${arg}.cpp $<TARGET_OBJECTS:main_test>)
+        target_include_directories(${arg} PRIVATE ${CATCH_INCLUDE_DIR})
+        set_target_properties(${arg}
+            PROPERTIES
+            RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/tests/bin"
+        )
+        add_test(${arg} tests/bin/${arg})
+
+    endforeach()
+endmacro()
+
+add_catch_test(vector)
