@@ -28,6 +28,27 @@ namespace glmath { namespace vector {
             return _data;
         }
         
+        float x() {
+            return _data[0];
+        }
+        
+        template <typename = float>
+        float y(typename std::enable_if<(N > 1)>::type* = 0) {
+            return _data[1];
+        }
+        
+        template <typename T = float>
+        float z(typename std::enable_if<(N > 2), T>::type* = 0) {
+            return _data[2];
+        }
+        
+        template <typename T = float>
+        float w(typename std::enable_if<(N > 3), T>::type* = 0) {
+            return _data[3];
+        }
+        
+        SWIZZLE();
+        
     private:
         std::array<float, N> _data;
     };
