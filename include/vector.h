@@ -35,10 +35,26 @@ namespace glmath { namespace vector {
             return _data[0];
         }
         
+        const float& x() const {
+            return _data[0];
+        }
+        
         template <typename T = float&>
         typename std::enable_if<(N > 1), T>::type
         y() {
             return _data[1];
+        }
+        
+        template <typename T = const float&>
+        typename std::enable_if<(N > 1), T>::type
+        y() const {
+            return _data[1];
+        }
+        
+        template <typename T = const float&>
+        typename std::enable_if<(N > 2), T>::type
+        z() const {
+            return _data[2];
         }
         
         template <typename T = float&>
@@ -53,6 +69,12 @@ namespace glmath { namespace vector {
             return _data[3];
         }
         
+        template <typename T = const float&>
+        typename std::enable_if<(N > 3), T>::type
+        w() const {
+            return _data[3];
+        }
+        
         SWIZZLE();
         
         bool operator==(const Vector<N>& v) const {
@@ -63,12 +85,12 @@ namespace glmath { namespace vector {
             return std::inner_product(_data.begin(), _data.end(), v.data().begin(), 0.0f);
         }
         
-        Vector<3> cross(Vector<3>&& v) {
+        Vector<3> cross(const Vector<3>&& v) {
             float a = y() * v.z() - z() * v.y();
             float b = z() * v.x() - x() * v.z();
             float c = x() * v.y() - y() * v.x();
             
-            Vector<3> rv({a, b, c});
+            Vector<3> rv(a, b, c);
 
             return rv;
         }

@@ -7,8 +7,8 @@ SCENARIO( "vectors manipulation", "[vector]" ) {
 
     GIVEN( "two vector with some items" ) {
         
-        Vec4 v1({0.0f,1.1f,2.0f,3.0f});
-        Vec4 v2({3.0f,2.0f,1.1f,0.0f});
+        Vec4 v1(0.0f,1.1f,2.0f,3.0f);
+        Vec4 v2(3.0f,2.0f,1.1f,0.0f);
         
         REQUIRE( v1.size() == 4 );
         REQUIRE( v2.size() == 4 );
