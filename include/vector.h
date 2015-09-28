@@ -100,7 +100,7 @@ namespace glmath { namespace vector {
                                       0.0f);
         }
         
-        Vector<3> cross(Vector<3>&& v) const {
+        Vector<3> cross(const Vector<3>&& v) const {
             float a = y() * v.z() - z() * v.y();
             float b = z() * v.x() - x() * v.z();
             float c = x() * v.y() - y() * v.x();
