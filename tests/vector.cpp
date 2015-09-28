@@ -32,6 +32,8 @@ SCENARIO( "vectors manipulation", "[vector]" ) {
             
             v3.x(5.0f);
             
+            auto v4 = v3.xy().x(5.0f);
+            
             THEN( "you get a new vector" ) {
 
                 REQUIRE( v3.x() == Catch::Detail::Approx(5.0f) );

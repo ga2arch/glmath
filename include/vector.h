@@ -34,8 +34,10 @@ namespace glmath { namespace vector {
         template <typename T,
         typename = std::enable_if_t<std::is_same<T, float>::value>>
         
-        void x(T _x) {
+        Vector& x(T _x) {
             _data[0] = _x;
+            
+            return *this;
         }
         
         const float& x() const {
@@ -46,7 +48,7 @@ namespace glmath { namespace vector {
         typename = std::enable_if_t<(N > 1)
             && std::is_same<T, float>::value>>
         
-        void y(T _y) {
+        Vector& y(T _y) {
             _data[1] = _y;
         }
         
@@ -61,7 +63,7 @@ namespace glmath { namespace vector {
         typename = std::enable_if_t<(N > 2)
             && std::is_same<T, float>::value>>
         
-        void z(T _z) {
+        Vector& z(T _z) {
             _data[2] = _z;
         }
         
@@ -76,7 +78,7 @@ namespace glmath { namespace vector {
         typename = std::enable_if_t<(N > 3)
             && std::is_same<T, float>::value>>
         
-        void w(T _w) {
+        Vector& w(T _w) {
             _data[3] = _w;
         }
         
