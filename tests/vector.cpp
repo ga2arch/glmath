@@ -28,11 +28,13 @@ SCENARIO( "vectors manipulation", "[vector]" ) {
         }
         
         WHEN( "you compute the cross product" ) {
-            Vec3 v3 = v1.xyz().cross(v2.xyz());
+            auto v3 = v1.xyz().cross(v2.xyz());
+            
+            v3.x(5.0f);
             
             THEN( "you get a new vector" ) {
 
-                REQUIRE( v3.x() == Catch::Detail::Approx(-2.79f) );
+                REQUIRE( v3.x() == Catch::Detail::Approx(5.0f) );
                 REQUIRE( v3.y() == Catch::Detail::Approx(6.0f) );
                 REQUIRE( v3.z() == Catch::Detail::Approx(-3.3f) );
 

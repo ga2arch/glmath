@@ -31,47 +31,59 @@ namespace glmath { namespace vector {
             return _data;
         }
         
-        float& x() {
-            return _data[0];
+        template <typename T,
+        typename = std::enable_if_t<std::is_same<T, float>::value>>
+        
+        void x(T _x) {
+            _data[0] = _x;
         }
         
         const float& x() const {
             return _data[0];
         }
         
-        template <typename T = float&>
-        typename std::enable_if<(N > 1), T>::type
-        y() {
+        template <typename T,
+        typename = std::enable_if_t<(N > 1)
+            && std::is_same<T, float>::value>>
+        
+        void y(T _y) {
+            _data[1] = _y;
+        }
+        
+        template <typename T = const float&,
+        typename = std::enable_if_t<(N > 1), T>>
+        
+        T y() const {
             return _data[1];
         }
         
-        template <typename T = const float&>
-        typename std::enable_if<(N > 1), T>::type
-        y() const {
-            return _data[1];
+        template <typename T,
+        typename = std::enable_if_t<(N > 2)
+            && std::is_same<T, float>::value>>
+        
+        void z(T _z) {
+            _data[2] = _z;
         }
         
-        template <typename T = const float&>
-        typename std::enable_if<(N > 2), T>::type
-        z() const {
+        template <typename T = const float&,
+        typename = std::enable_if_t<(N > 2), T>>
+        
+        T z() const {
             return _data[2];
         }
         
-        template <typename T = float&>
-        typename std::enable_if<(N > 2), T>::type
-        z() {
-            return _data[2];
+        template <typename T,
+        typename = std::enable_if_t<(N > 3)
+            && std::is_same<T, float>::value>>
+        
+        void w(T _w) {
+            _data[3] = _w;
         }
         
-        template <typename T = float&>
-        typename std::enable_if<(N > 3), T>::type
-        w() {
-            return _data[3];
-        }
+        template <typename T = const float&,
+        typename = std::enable_if_t<(N > 3), T>>
         
-        template <typename T = const float&>
-        typename std::enable_if<(N > 3), T>::type
-        w() const {
+        T w() const {
             return _data[3];
         }
         
@@ -82,17 +94,18 @@ namespace glmath { namespace vector {
         }
         
         float dot(const Vector<N>& v) {
-            return std::inner_product(_data.begin(), _data.end(), v.data().begin(), 0.0f);
+            return std::inner_product(_data.begin(),
+                                      _data.end(),
+                                      v.data().begin(),
+                                      0.0f);
         }
         
-        Vector<3> cross(const Vector<3>&& v) {
+        Vector<3> cross(Vector<3>&& v) const {
             float a = y() * v.z() - z() * v.y();
             float b = z() * v.x() - x() * v.z();
             float c = x() * v.y() - y() * v.x();
-            
-            Vector<3> rv(a, b, c);
 
-            return rv;
+            return {a, b, c};
         }
         
     private:

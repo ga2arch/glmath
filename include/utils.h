@@ -299,8 +299,7 @@ namespace glmath { namespace utils {
 #define SWIZZLExx() template <typename T = Vector<2>> Vector<2> xx(typename std::enable_if<(N > 1), T>::type* = 0) { Vector<2> v({x(),x()}); return v;} SWIZZLExy()
 #define SWIZZLExy() template <typename T = Vector<2>> Vector<2> xy(typename std::enable_if<(N > 1), T>::type* = 0) { Vector<2> v({x(),y()}); return v;} SWIZZLEyx()
 #define SWIZZLEyx() template <typename T = Vector<2>> Vector<2> yx(typename std::enable_if<(N > 1), T>::type* = 0) { Vector<2> v({y(),x()}); return v;} SWIZZLEyy()
-#define SWIZZLEyy() template <typename T = Vector<2>> Vector<2> yy(typename std::enable_if<(N > 1), T>::type* = 0) { Vector<2> v({y(),y()}); return v;} SWIZZLEx()
-#define SWIZZLEx() template <typename T = Vector<1>> Vector<1> x(typename std::enable_if<(N > 0), T>::type* = 0) { Vector<1> v({x()}); return v;}
+#define SWIZZLEyy() template <typename T = Vector<2>> Vector<2> yy(typename std::enable_if<(N > 1), T>::type* = 0) { Vector<2> v({y(),y()}); return v;} 
 #define SWIZZLE() SWIZZLExyzw()
 
     template <typename... List>
