@@ -50,6 +50,8 @@ namespace glmath { namespace vector {
         
         Vector& y(T _y) {
             _data[1] = _y;
+            
+            return *this;
         }
         
         template <typename T = const float&,
@@ -65,6 +67,8 @@ namespace glmath { namespace vector {
         
         Vector& z(T _z) {
             _data[2] = _z;
+            
+            return *this;
         }
         
         template <typename T = const float&,
@@ -80,6 +84,8 @@ namespace glmath { namespace vector {
         
         Vector& w(T _w) {
             _data[3] = _w;
+            
+            return *this;
         }
         
         template <typename T = const float&,
