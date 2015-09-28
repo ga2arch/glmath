@@ -93,14 +93,14 @@ namespace glmath { namespace vector {
             return v.data() == _data;
         }
         
-        float dot(const Vector<N>& v) {
+        float dot(const Vector<N>& v) const {
             return std::inner_product(_data.begin(),
                                       _data.end(),
                                       v.data().begin(),
                                       0.0f);
         }
         
-        Vector<3> cross(const Vector<3>&& v) const {
+        Vector<3> cross(const Vector<3>& v) const {
             float a = y() * v.z() - z() * v.y();
             float b = z() * v.x() - x() * v.z();
             float c = x() * v.y() - y() * v.x();
@@ -111,7 +111,6 @@ namespace glmath { namespace vector {
     private:
         std::array<float, N> _data;
     };
-    
     
     using Vec4 = Vector<4>;
     using Vec3 = Vector<3>;

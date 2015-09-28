@@ -14,7 +14,7 @@ SCENARIO( "vectors manipulation", "[vector]" ) {
         REQUIRE( v2.size() == 4 );
         
         WHEN( "you compute the dot product" ) {
-            float product = v1.dot(v2);
+            float product = v1.dot(v2.xyzw());
             
             THEN( "the result is the sum of the mul of each coord" ) {
                 float t = 0.0f*3.0f
