@@ -77,6 +77,12 @@ namespace glmath { namespace vector {
         std::array<float, N> _data;
     };
     
+    
+    using Vec4 = Vector<4>;
+    using Vec3 = Vector<3>;
+    using Vec2 = Vector<2>;
+    using Vec1 = Vector<1>;
+    
 }}
 
 #endif
