@@ -55,7 +55,7 @@ namespace glmath { namespace vector {
         
         SWIZZLE();
         
-        bool operator==(const Vector& v) const {
+        bool operator==(const Vector<N>& v) const {
             return v.data() == _data;
         }
         
